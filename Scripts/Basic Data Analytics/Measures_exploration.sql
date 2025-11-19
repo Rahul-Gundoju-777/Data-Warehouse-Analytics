@@ -1,38 +1,47 @@
--- ==================================================
--- Measures Exploration
--- ==================================================
--- Find the total sales
-select SUM(sales_amount) As total_sales from gold.fact_sales
+/*
+===============================================================================
+Measures Exploration
+===============================================================================
+Purpose:
+    - To calculate aggregated metrics (e.g., totals, averages) for quick insights.
+    - To identify overall trends or spot anomalies.
+
+SQL Functions Used:
+    - COUNT(), SUM(), AVG()
+===============================================================================
+*/
+
+-- Find the Total Sales
+SELECT SUM(sales_amount) AS total_sales FROM gold.fact_sales
 
 -- Find how many items are sold
-select SUM(quantity) as total_quantity from gold.fact_sales
+SELECT SUM(quantity) AS total_quantity FROM gold.fact_sales
 
 -- Find the average selling price
-select AVG(price) as avg_price from gold.fact_sales
+SELECT AVG(price) AS avg_price FROM gold.fact_sales
 
--- Find the total number of orders
-select COUNT(order_number) as total_orders from gold.fact_sales\
-select COUNT(DISTINCT order_number) as total_orders from gold.fact_sales
+-- Find the Total number of Orders
+SELECT COUNT(order_number) AS total_orders FROM gold.fact_sales
+SELECT COUNT(DISTINCT order_number) AS total_orders FROM gold.fact_sales
 
 -- Find the total number of products
-select count(product_key) as total_products from gold.dim_products
-select count(DISTINCT product_key) as total_products from gold.dim_products
+SELECT COUNT(product_name) AS total_products FROM gold.dim_products
 
 -- Find the total number of customers
-select count(customer_key) as total_customers from gold.dim_customers
+SELECT COUNT(customer_key) AS total_customers FROM gold.dim_customers;
 
 -- Find the total number of customers that has placed an order
-select count(DISTINCT customer_key) as total_customers from gold.fact_sales
+SELECT COUNT(DISTINCT customer_key) AS total_customers FROM gold.fact_sales;
 
--- Generate a report that shows all the key metrics of the business
-select 'Total sales' as measure_name, SUM(sales_amount) As measure_value from gold.fact_sales
+-- Generate a Report that shows all key metrics of the business
+SELECT 'Total Sales' AS measure_name, SUM(sales_amount) AS measure_value FROM gold.fact_sales
 UNION ALL
-select 'Total quantity', SUM(quantity) from gold.fact_sales
+SELECT 'Total Quantity', SUM(quantity) FROM gold.fact_sales
 UNION ALL
-select 'Average Price', AVG(price) from gold.fact_sales
+SELECT 'Average Price', AVG(price) FROM gold.fact_sales
 UNION ALL
-select 'Total nr orders', COUNT(DISTINCT order_number) from gold.fact_sales
+SELECT 'Total Orders', COUNT(DISTINCT order_number) FROM gold.fact_sales
 UNION ALL
-select 'Total nr products', count(DISTINCT product_key) from gold.dim_products
+SELECT 'Total Products', COUNT(DISTINCT product_name) FROM gold.dim_products
 UNION ALL
-select 'Total nr customers', count(customer_key) from gold.dim_customers
+SELECT 'Total Customers', COUNT(customer_key) FROM gold.dim_customers;
