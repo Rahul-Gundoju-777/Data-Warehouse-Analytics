@@ -47,6 +47,11 @@ Data-Warehouse-Analytics/
 ├── 📁 Scripts/                            # Data Analytics Exploration scripts and Customer & Product reports
 ```
 
+### 🙌 Acknowledgements
+Thanks for exploring this project!
+
+### 📄 License
+This project is open-source and available under the MIT License.
 
 ### 👩‍💻 About Me : 
 Hi there! I'm Rahul Gundoju  
