@@ -1,52 +1,49 @@
---=============================================
--- Changes-Over-time (Trends)
---=============================================
--- Analyze sales performance over time
-select 
-YEAR(order_date) order_year, -- Changes over years
-SUM(sales_amount) total_sales,
-COUNT(DISTINCT customer_key) total_customers,
-SUM(quantity) as total_quantity
-from gold.fact_sales
-WHERE order_date IS NOT NULL
-GROUP BY YEAR(order_date)
-ORDER BY YEAR(order_date)	
+/*
+===============================================================================
+Change Over Time Analysis
+===============================================================================
+Purpose:
+    - To track trends, growth, and changes in key metrics over time.
+    - For time-series analysis and identifying seasonality.
+    - To measure growth or decline over specific periods.
 
-select 
-YEAR(order_date) order_year,
-month(order_date) order_month, -- Changes over months
-SUM(sales_amount) total_sales,
-COUNT(DISTINCT customer_key) total_customers,
-SUM(quantity) as total_quantity
-from gold.fact_sales
-WHERE order_date IS NOT NULL
-GROUP BY YEAR(order_date),month(order_date)
-ORDER BY YEAR(order_date),month(order_date)
+SQL Functions Used:
+    - Date Functions: DATEPART(), DATETRUNC(), FORMAT()
+    - Aggregate Functions: SUM(), COUNT(), AVG()
+===============================================================================
+*/
 
-select 
-DATETRUNC(month, order_date) order_date, -- Changes over months
-SUM(sales_amount) total_sales,
-COUNT(DISTINCT customer_key) total_customers,
-SUM(quantity) as total_quantity
-from gold.fact_sales
+-- Analyse sales performance over time
+-- Quick Date Functions
+SELECT
+    YEAR(order_date) AS order_year,
+    MONTH(order_date) AS order_month,
+    SUM(sales_amount) AS total_sales,
+    COUNT(DISTINCT customer_key) AS total_customers,
+    SUM(quantity) AS total_quantity
+FROM gold.fact_sales
+WHERE order_date IS NOT NULL
+GROUP BY YEAR(order_date), MONTH(order_date)
+ORDER BY YEAR(order_date), MONTH(order_date);
+
+-- DATETRUNC()
+SELECT
+    DATETRUNC(month, order_date) AS order_date,
+    SUM(sales_amount) AS total_sales,
+    COUNT(DISTINCT customer_key) AS total_customers,
+    SUM(quantity) AS total_quantity
+FROM gold.fact_sales
 WHERE order_date IS NOT NULL
 GROUP BY DATETRUNC(month, order_date)
-ORDER BY DATETRUNC(month, order_date)
+ORDER BY DATETRUNC(month, order_date);
 
-select 
-FORMAT(order_date,'yyyy-MMM') order_date, -- Changes over months
-SUM(sales_amount) total_sales,
-COUNT(DISTINCT customer_key) total_customers,
-SUM(quantity) as total_quantity
-from gold.fact_sales
+-- FORMAT()
+SELECT
+    FORMAT(order_date, 'yyyy-MMM') AS order_date,
+    SUM(sales_amount) AS total_sales,
+    COUNT(DISTINCT customer_key) AS total_customers,
+    SUM(quantity) AS total_quantity
+FROM gold.fact_sales
 WHERE order_date IS NOT NULL
-GROUP BY FORMAT(order_date,'yyyy-MMM')
-ORDER BY FORMAT(order_date,'yyyy-MMM')
-
--- How many new customers were added each year
-select 
-DATETRUNC(year, create_date) as create_date,
-COUNT(customer_key) as total_customers
-from gold.dim_customers
-GROUP by DATETRUNC(year, create_date)
-Order by DATETRUNC(year, create_date)
+GROUP BY FORMAT(order_date, 'yyyy-MMM')
+ORDER BY FORMAT(order_date, 'yyyy-MMM');
