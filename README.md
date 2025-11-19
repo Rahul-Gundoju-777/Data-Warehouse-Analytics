@@ -39,3 +39,21 @@ These analyses provide deeper business insights and behavioral patterns.
  * Product performance summaries
  * Comprehensive business-focused reporting
 
+### 🗂 Repository Structure
+```
+Data-Warehouse-Analytics/
+├── 📁 datasets/                           # Data extracted from the warehouse project
+├── 📁 diagrams/                           # Data Analytics Roadmap Flowchat
+├── 📁 Scripts/                            # Data Analytics Exploration scripts and Customer & Product reports
+```
+
+
+### 👩‍💻 About Me : 
+Hi there! I'm Rahul Gundoju  
+ - 🔍 Passionate about **Data Analysis, Business Insights, and Visualization**  
+ - 🎯 Actively seeking **Data Analyst opportunities**  
+ - 🛠  Skilled in **SQL, Python (Pandas/Numpy), Excel**  
+ - 🎓 Artificial Intelligence & Data Science Graduate
+ - 🔗 LinkedIn: www.linkedin.com/in/rahul-gundoju
+ - 📧 Email: rahulgundoju777@gmail.com
+ - 📍 Hyderabad, India  
