@@ -57,7 +57,7 @@ This project is open-source and available under the MIT License.
 Hi there! I'm Rahul Gundoju  
  - 🔍 Passionate about **Data Analysis, Business Insights, and Visualization**  
  - 🎯 Actively seeking **Data Analyst opportunities**  
- - 🛠  Skilled in **SQL, Python (Pandas/Numpy), Excel**  
+ - 🛠  Skilled in **SQL, Excel, Power BI, Python (Pandas/Numpy)**  
  - 🎓 Artificial Intelligence & Data Science Graduate
  - 🔗 LinkedIn: www.linkedin.com/in/rahul-gundoju
  - 📧 Email: rahulgundoju777@gmail.com
